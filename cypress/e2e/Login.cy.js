@@ -3,6 +3,11 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
 });
 
+
+  afterEach(() => {
+    cy.screenshotTimestamped();
+  });
+
 describe('Pruebas de Login', () => {
 
   it('Login exitoso', () => {

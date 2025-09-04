@@ -25,45 +25,57 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('loginAPI', () => {
-    const url = Cypress.config('baseUrl')
-    const u = Cypress.env('test').username
-    const p = Cypress.env('test').password
+  const url = Cypress.config('baseUrl')
+  const u = Cypress.env('test').username
+  const p = Cypress.env('test').password
 
-    cy.request({
-        method: 'POST',
-        url: `${url}/login`, // o el endpoint real de login
-        form: true, // si es application/x-www-form-urlencoded
-        body: `username=${u}&password=${p}`
-    }).then((resp) => {
-        // Cypress guarda automáticamente las cookies de la respuesta
-        expect(resp.status).to.eq(200);
-        cy.visit('/')
-        // No es la página de Login, por lo tanto se autenticó correctamente
-        cy.get('body').should('not.contain', 'Bienvenido')
+  cy.request({
+    method: 'POST',
+    url: `${url}/login`, // o el endpoint real de login
+    form: true, // si es application/x-www-form-urlencoded
+    body: `username=${u}&password=${p}`
+  }).then((resp) => {
+    // Cypress guarda automáticamente las cookies de la respuesta
+    expect(resp.status).to.eq(200);
+    cy.visit('/')
+    // No es la página de Login, por lo tanto se autenticó correctamente
+    cy.get('body').should('not.contain', 'Bienvenido')
 
-    })
+  })
 });
 
 Cypress.Commands.add('loginUI', () => {
 
-    cy.visit('/')
-    cy.get('input#input-1').type(Cypress.env('test').username)
-    cy.get('input#input-2').type(Cypress.env('test').password)
-    cy.get('paper-button.green.x-scope.paper-button-0').click()
+  cy.visit('/')
+  cy.get('input#input-1').type(Cypress.env('test').username)
+  cy.get('input#input-2').type(Cypress.env('test').password)
+  cy.get('paper-button.green.x-scope.paper-button-0').click()
 
-    cy.get('.main-title > span').should('contain', 'Gestor de Calidad')
+  cy.get('.main-title > span').should('contain', 'Gestor de Calidad')
 
 });
 
-Cypress.Commands.add('screenshotWithTestNameAndTimestamp', () => {
-  const now = new Date();
-  const timestamp = now.toISOString().replace(/[:.]/g, '-');
 
-  const testName = Cypress.currentTest.title || 'screenshot';
+Cypress.Commands.add('screenshotTimestamped', () => {
+  const now = new Date();
+
+  // Formato local para el nombre del archivo (YYYY-MM-DD_HH-MM-SS)
+  const localTimestamp = now.toLocaleString('sv-SE', {
+    timeZone: 'America/Argentina/Buenos_Aires',
+  }).replace(/[: ]/g, '-').replace(',', '');
+
+  const testName = Cypress.currentTest?.title || 'screenshot';
 
   cy.document().then((doc) => {
     const timestampDiv = doc.createElement('div');
-    timestampDiv.innerText = `Captura tomada: ${now.toLocaleString('es-AR')}`;
+
+    // Formato 24h para el timestamp visible
+    const visibleTimestamp = now.toLocaleString('es-AR', {
+      hour12: false,
+      timeZone: 'America/Argentina/Buenos_Aires',
+    });
+
+    timestampDiv.innerText = `Captura tomada: ${visibleTimestamp}`;
     timestampDiv.style.position = 'fixed';
     timestampDiv.style.bottom = '10px';
     timestampDiv.style.right = '10px';
@@ -76,7 +88,7 @@ Cypress.Commands.add('screenshotWithTestNameAndTimestamp', () => {
   });
 
   cy.wait(500);
-  cy.screenshot(`${testName}_${timestamp}`);
+  //cy.screenshot(`${testName}_${localTimestamp}`);
 });
 
 

@@ -3,6 +3,8 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   defaultCommandTimeout: 30000, // 10 segundos para todos los comandos como cy.get()
   e2e: {
+    viewportHeight: 720,
+    viewportWidth: 1280,
     //baseUrl: "posible entorno desarrollo",
     baseUrl: "http://claaaicr3a03:8448/",
     //baseUrl: "posible entorno produccion",

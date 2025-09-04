@@ -7,21 +7,19 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Pruebas navegación modulos', () => {
 
   beforeEach(() => {
-    
     // Login API
     cy.loginAPI();
 
     //Login UI
     //cy.loginUI();
-
   });
 
   afterEach(() => {
-    cy.screenshotWithTestNameAndTimestamp();
+    cy.screenshotTimestamped();
   });
 
 
-  it('Navegación al módulo de Interrupciones', () => {
+  it.only('Navegación al módulo de Interrupciones', () => {
     cy.get('.menu-item.gi').click()
     cy.url().should('include', '/gestorInterrupciones')
     cy.get('#main').should('contain', 'Gestor de Interrupciones')
