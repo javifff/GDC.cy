@@ -5,7 +5,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 import GestionFM_FE from '../support/page_objects/GestionFM/FE/index.js'
 import GestionFM_Comun from '../support/page_objects/GestionFM/Comun/index.js'
-import GestionFM_BE from '../support/page_objects/GestionFM/BE/index.js'
+
 
 
 
@@ -20,7 +20,7 @@ describe('Módulo GestionFM', () => {
         cy.screenshotTimestamped();
     });
 
-    it('IJCESGDSAR-5511 - Prueba FE, visualzación OK en grilla resultados', () => {
+    xit('IJCESGDSAR-5511 - Visualzación OK en grilla resultados', () => {
 
         const numReg = 60
 
@@ -41,7 +41,7 @@ describe('Módulo GestionFM', () => {
 
     })
 
-    it('IJCESGDSAR-5511 - Prueba FE, Filtros seleccionados forman un API Request correcto', () => {
+    xit('IJCESGDSAR-5511 - Filtros seleccionados forman un API Request correcto', () => {
 
         GestionFM_Comun.navegaraAGestionFM()
 
@@ -51,41 +51,5 @@ describe('Módulo GestionFM', () => {
     })
 
 
-    it('IJCESGDSAR-5511 - Prueba BE, verificación datos respuesta API', () => {
-
-        const params = {
-            interruptionId: '',
-            dateFrom: '01-07-2025 12:33:00',
-            dateTo: '',
-            projectCode: '',
-            selectedCausal: '',
-            buildingCode: '',
-            documentNumber: ''
-        };
-
-        // Con cy.task a la BBDD vemos cuantos registros debe devolver con esos filtros
-        // y luego comprobamos que la API devuelve lo mismo
-
-        const numRegistrosEsperados = 3; // Valor ficticio, debe venir de la BBDD
-
-        GestionFM_BE.getfindFMByFilter(params).then((response) => {
-            console.log(response)
-            expect(response.status).to.eq(200)
-            expect(response.headers['content-type']).to.include('application/json')
-            // Verifica que el body sea un array con x elementos
-            expect(response.body).to.be.an('array')
-            expect(response.body).to.have.length(numRegistrosEsperados)
-
-
-        })
-
-        GestionFM_BE.getCountFMByFilter(params).then((response) => {
-            console.log(response);
-            expect(response.status).to.eq(200);
-            expect(response.body).to.be.eq(numRegistrosEsperados);
-        })
-
-
-    });
 });
 

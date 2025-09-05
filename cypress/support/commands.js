@@ -92,3 +92,7 @@ Cypress.Commands.add('screenshotTimestamped', () => {
 });
 
 
+Cypress.Commands.add('logWithContext', (functionName, data) => {
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp} [${functionName}] -`, data);
+});

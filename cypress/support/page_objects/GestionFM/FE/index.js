@@ -10,6 +10,16 @@ class GestionFM_FE {
         cy.get('#gestion-fm-link').click()
         cy.wait(['@getFMData', '@getFMCount'])
     }
-}
+
+    mostrarFiltros() {
+        // Si no está mostrado pulsar el botón para mostrar los filtros
+     
+    }
+
+    seleccionarFechaHoraEnCalendario(fecha, hora) {
+
+    }
+
+}    
 
 export default new GestionFM_FE();
