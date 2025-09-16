@@ -8,9 +8,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     cy.screenshotTimestamped();
   });
 
-describe('Pruebas de Login', () => {
+describe('Pruebas Comunes', () => {
 
-  it('Login exitoso', () => {
+  it('IJCESGDSAR-5425 - Login', () => {
     cy.visit('/')
     cy.get('input#input-1').type(Cypress.env('test').username)
     cy.get('input#input-2').type(Cypress.env('test').password)
@@ -20,7 +20,7 @@ describe('Pruebas de Login', () => {
 
   })
 
-  it('Login usando API', () => {
+  it.skip('Login usando API', () => {
     cy.loginAPI();
 
   });

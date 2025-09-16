@@ -1,29 +1,3 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
 Cypress.Commands.add('loginAPI', () => {
   const url = Cypress.config('baseUrl')
   const u = Cypress.env('test').username
@@ -40,8 +14,10 @@ Cypress.Commands.add('loginAPI', () => {
     cy.visit('/')
     // No es la página de Login, por lo tanto se autenticó correctamente
     cy.get('body').should('not.contain', 'Bienvenido')
-
+    cy.get('.main-title > span').should('contain', 'Gestor de Calidad')
+    cy.get('#icon.style-scope.paper-icon-button.x-scope.iron-icon-0').should('be.visible') // Espera a que se carguen imagenes
   })
+
 });
 
 Cypress.Commands.add('loginUI', () => {
@@ -56,7 +32,7 @@ Cypress.Commands.add('loginUI', () => {
 });
 
 
-Cypress.Commands.add('screenshotTimestamped', () => {
+Cypress.Commands.add('screenshotTimestamped', (n) => {
   const now = new Date();
 
   // Formato local para el nombre del archivo (YYYY-MM-DD_HH-MM-SS)
@@ -65,9 +41,10 @@ Cypress.Commands.add('screenshotTimestamped', () => {
   }).replace(/[: ]/g, '-').replace(',', '');
 
   const testName = Cypress.currentTest?.title || 'screenshot';
+  const fileName = `${testName}_${n}_${localTimestamp}`;
 
   cy.document().then((doc) => {
-    const timestampDiv = doc.createElement('div');
+    const infoDiv = doc.createElement('div');
 
     // Formato 24h para el timestamp visible
     const visibleTimestamp = now.toLocaleString('es-AR', {
@@ -75,20 +52,25 @@ Cypress.Commands.add('screenshotTimestamped', () => {
       timeZone: 'America/Argentina/Buenos_Aires',
     });
 
-    timestampDiv.innerText = `Captura tomada: ${visibleTimestamp}`;
-    timestampDiv.style.position = 'fixed';
-    timestampDiv.style.bottom = '10px';
-    timestampDiv.style.right = '10px';
-    timestampDiv.style.background = 'rgba(0,0,0,0.7)';
-    timestampDiv.style.color = 'white';
-    timestampDiv.style.padding = '5px 10px';
-    timestampDiv.style.zIndex = '9999';
-    timestampDiv.style.fontSize = '14px';
-    doc.body.appendChild(timestampDiv);
+    infoDiv.innerHTML = `
+      <div style="font-weight: bold;">Archivo: ${fileName}</div>
+      <div>Captura tomada: ${visibleTimestamp}</div>
+    `;
+    infoDiv.style.position = 'fixed';
+    infoDiv.style.bottom = '10px';
+    infoDiv.style.right = '10px';
+    infoDiv.style.background = 'rgba(0,0,0,0.7)';
+    infoDiv.style.color = 'white';
+    infoDiv.style.padding = '8px 12px';
+    infoDiv.style.zIndex = '9999';
+    infoDiv.style.fontSize = '14px';
+    infoDiv.style.borderRadius = '4px';
+    infoDiv.style.textAlign = 'left';
+    doc.body.appendChild(infoDiv);
   });
 
   cy.wait(500);
-  //cy.screenshot(`${testName}_${localTimestamp}`);
+  cy.screenshot(fileName);
 });
 
 
