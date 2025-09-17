@@ -62,6 +62,11 @@ class GestionFM_FE {
 
     }
 
+    pulsarBotonMenu() {
+        cy.get(el.botonMenu).should('be.visible').click()
+        cy.get(el.botonMenu).should('not.exist')
+    }
+
 }
 
 export default new GestionFM_FE();

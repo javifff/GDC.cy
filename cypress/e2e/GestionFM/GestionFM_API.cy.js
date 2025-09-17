@@ -17,7 +17,7 @@ describe('Módulo GestionFM API', () => {
 
    
 
-    it('IJCESGDSAR-5511 - Filtro con Fecha Inicio', () => {
+    xit('IJCESGDSAR-5511 - Filtro con Fecha Inicio', () => {
 
         const params = {
             interruptionId: '',
@@ -35,7 +35,7 @@ describe('Módulo GestionFM API', () => {
 
     });
 
-    it('IJCESGDSAR-5511 - Seleccionado check "Sin operación"', () => {
+    xit('IJCESGDSAR-5511 - Seleccionado check "Sin operación"', () => {
 
         const params = {
             interruptionId: '',

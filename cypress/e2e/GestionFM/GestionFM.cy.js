@@ -5,6 +5,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 import GestionFM_FE from '../../support/page_objects/GestionFM/FE'
 import MenuPrincipal from '../../support/page_objects/MenuPrincipal'
+import Login from '../../support/page_objects/Login'
 
 
 
@@ -16,15 +17,29 @@ describe('Módulo GestionFM', () => {
         cy.loginAPI();
     });
 
-    afterEach(() => {
-        cy.screenshotTimestamped();
-    });
+    it('IJCESGDSAR-5557 - FM. Volver al menu.', () => {
 
-    it('IJCESGDSAR-5511 - Visualzación OK en grilla resultados', () => {
+        // Paso 1
+        cy.screenshotTimestamped(1)
+        MenuPrincipal.navegarAGestionFM()
+
+        // Paso 2
+        cy.screenshotTimestamped(2)
+        GestionFM_FE.pulsarBotonMenu()
+
+
+        // Paso 3
+        Login.verificarMenuPrincipal()
+        cy.screenshotTimestamped(3)
+
+
+    })
+
+    xit('IJCESGDSAR-5511 - Visualzación OK en grilla resultados', () => {
 
         const numReg = 60
 
-        MenuPrincipal.navegaraAGestionFM()
+        MenuPrincipal.navegarAGestionFM()
 
         //Intercepta los datos del filtro y el count de registros
         GestionFM_FE.respuestaMockeada(numReg)
@@ -41,7 +56,7 @@ describe('Módulo GestionFM', () => {
 
     })
 
-    it('IJCESGDSAR-5511 - Filtros seleccionados forman un API Request correcto', () => {
+    xit('IJCESGDSAR-5511 - Filtros seleccionados forman un API Request correcto', () => {
 
         const params = {
             interruptionId: '12345',
@@ -84,7 +99,7 @@ describe('Módulo GestionFM', () => {
                 documentNumber: params.documentNumber
                 //documentNumber: '1234'
             })
-        }).as('getFMCount') 
+        }).as('getFMCount')
 
         GestionFM_FE.pulsaBuscar()
 

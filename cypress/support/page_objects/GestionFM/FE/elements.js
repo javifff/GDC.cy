@@ -1,5 +1,5 @@
 export const ELEMENTS = {
-
+    botonMenu: 'nav.mdl-navigation > a[href="/menu"]',
     interruptionIdInput: '#interruptionId',
     dateFromInput: '#date-from',
     dateFromButton: '#datepicker-bttn',

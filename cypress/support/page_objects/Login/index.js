@@ -22,7 +22,7 @@ class Login {
         cy.url().should('include', '/login')
     }
 
-    verificarLoginCorrecto() {
+    verificarMenuPrincipal() {
         // Carga el menu principal
         cy.get(el.tituloPrincipal).should('contain', 'Gestor de Calidad')
         cy.get(el.iconoSalir).should('be.visible') // Espera a que se carguen imagenes

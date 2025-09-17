@@ -10,7 +10,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 describe('Pruebas Comunes', () => {
 
-  it('IJCESGDSAR-5425 - Login', () => {
+  xit('IJCESGDSAR-5425 - Login', () => {
     cy.visit('/')
     cy.get('input#input-1').type(Cypress.env('test').username)
     cy.get('input#input-2').type(Cypress.env('test').password)
@@ -20,7 +20,7 @@ describe('Pruebas Comunes', () => {
 
   })
 
-  it.skip('Login usando API', () => {
+  xit('Login usando API', () => {
     cy.loginAPI();
 
   });

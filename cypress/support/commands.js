@@ -38,7 +38,10 @@ Cypress.Commands.add('screenshotTimestamped', (n) => {
   // Formato local para el nombre del archivo (YYYY-MM-DD_HH-MM-SS)
   const localTimestamp = now.toLocaleString('sv-SE', {
     timeZone: 'America/Argentina/Buenos_Aires',
-  }).replace(/[: ]/g, '-').replace(',', '');
+  }).replace(' ', '_')        // separa fecha y hora con guión bajo
+    .replace(/:/g, '-')        // reemplaza los dos puntos de la hora por guiones
+    .replace(',', '');         // elimina la coma si aparece
+
 
   const testName = Cypress.currentTest?.title || 'screenshot';
   const fileName = `${testName}_${n}_${localTimestamp}`;
@@ -53,8 +56,8 @@ Cypress.Commands.add('screenshotTimestamped', (n) => {
     });
 
     infoDiv.innerHTML = `
-      <div style="font-weight: bold;">Archivo: ${fileName}</div>
-      <div>Captura tomada: ${visibleTimestamp}</div>
+      <div style="font-weight: bold;">${fileName}</div>
+      <div>Timestamp: ${visibleTimestamp}</div>
     `;
     infoDiv.style.position = 'fixed';
     infoDiv.style.bottom = '10px';
@@ -69,12 +72,12 @@ Cypress.Commands.add('screenshotTimestamped', (n) => {
     doc.body.appendChild(infoDiv);
   });
 
-  cy.wait(500);
+  //cy.wait(500);
   cy.screenshot(fileName);
 });
 
 
 Cypress.Commands.add('logWithContext', (functionName, data) => {
-    const timestamp = new Date().toISOString();
-    console.log(`${timestamp} [${functionName}] -`, data);
+  const timestamp = new Date().toISOString();
+  console.log(`${timestamp} [${functionName}] -`, data);
 });
