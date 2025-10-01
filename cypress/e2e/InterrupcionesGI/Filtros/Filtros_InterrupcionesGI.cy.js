@@ -15,10 +15,20 @@ describe('Módulo Interrupciones - GI - Filtros', () => {
         cy.loginAPI();
     });
 
-    xit('IJCESGDSAR-5427 - Filtros. Seleccionar estado Abiertas / Cerradas y periodo sin FM. ', () => {
+    it('CERTASEARG-5451 - Seleccionar Filtro. Ingresar valores - Borrar Filtros', () => {
 
+        // Muchisimo trabajo para identificar todos los elementos de los filtros
+
+        // Paso 1
         cy.loginAPI();
-        MenuPrincipal.navegarAInterrupcionesGI()
+        cy.screenshotTimestamped(1.1)
+        MenuPrincipal.navegarAInterrupcionesGI();
+        cy.screenshotTimestamped(1.2)
+
+        // Paso 2
+        InterrupcionesGI.mostrarFiltros()
+        InterrupcionesGI.rellenarTodosLosFiltros()
+        cy.screenshotTimestamped(2)
 
     })
 

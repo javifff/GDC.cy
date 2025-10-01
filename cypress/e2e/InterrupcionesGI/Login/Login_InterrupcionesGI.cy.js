@@ -9,7 +9,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 describe('Módulo Interrupciones - GI', () => {
 
-    it('IJCESGDSAR-5425 - GI. Login', () => {
+    it('CERTASEARG-5425 - GI. Login', () => {
 
         const usuario = Cypress.env('test').username
         const password = Cypress.env('test').password
@@ -48,7 +48,7 @@ describe('Módulo Interrupciones - GI', () => {
 
     })
 
-     it('IJCESGDSAR-5426 - GI. Login. Inicio de Sesion Simultáneo. Mismo Usuario.', () => {
+     it('CERTASEARG-5426 - GI. Login. Inicio de Sesion Simultáneo. Mismo Usuario.', () => {
 
         const usuario = Cypress.env('test').username
         const password = Cypress.env('test').password
@@ -88,7 +88,7 @@ describe('Módulo Interrupciones - GI', () => {
     })
 
 
-    it('IJCESGDSAR-5469 - GI. Volver al menú', () => {
+    it('CERTASEARG-5469 - GI. Volver al menú', () => {
 
         // Paso 1
         cy.loginAPI();
@@ -104,7 +104,7 @@ describe('Módulo Interrupciones - GI', () => {
 
      })
 
-     it('IJCESGDSAR-5470 - GI. Cerrar sesión', () => {
+     it('CERTASEARG-5470 - GI. Cerrar sesión', () => {
 
         // Paso 1
         cy.loginAPI();

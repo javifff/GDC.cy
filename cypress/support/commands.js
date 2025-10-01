@@ -72,7 +72,7 @@ Cypress.Commands.add('screenshotTimestamped', (n) => {
     doc.body.appendChild(infoDiv);
   });
 
-  //cy.wait(500);
+  cy.wait(500);
   cy.screenshot(fileName);
 });
 
