@@ -4,7 +4,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 
-import GestionFM_BE from '../../support/page_objects/GestionFM/BE/index.js'
+import GestionFM_BE from '../../../support/page_objects/GestionFM/PARA_PRUEBAS_DESACOPLADAS/';
 
 
 

@@ -1,6 +1,5 @@
 import TablasENREComun from "../../../support/page_objects/TablasENRE/Comun";
 import TablasENREGenerar from "../../../support/page_objects/TablasENRE/Generar";
-import Login from "../../../support/page_objects/Login";
 import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
 
 Cypress.on('uncaught:exception', (err, runnable) => {

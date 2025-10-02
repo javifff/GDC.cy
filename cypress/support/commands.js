@@ -32,7 +32,7 @@ Cypress.Commands.add('loginUI', () => {
 });
 
 
-Cypress.Commands.add('screenshotTimestamped', (n) => {
+Cypress.Commands.add('screenshotTimestamped', (n, scrollToTop = false) => {
   const now = new Date();
 
   // Formato local para el nombre del archivo (YYYY-MM-DD_HH-MM-SS)
@@ -45,6 +45,27 @@ Cypress.Commands.add('screenshotTimestamped', (n) => {
 
   const testName = Cypress.currentTest?.title || 'screenshot';
   const fileName = `${testName}_${n}_${localTimestamp}`;
+
+
+if (scrollToTop) {
+  cy.window().then((win) => {
+    // Scroll de la ventana principal
+    win.scrollTo(0, 0);
+
+    // También todos los elementos con scroll interno
+    const allElements = win.document.querySelectorAll('*');
+    allElements.forEach((el) => {
+      if (el.scrollTop > 0) {
+        el.scrollTop = 0;
+      }
+      if (el.scrollLeft > 0) {
+        el.scrollLeft = 0;
+      }
+    });
+  });
+  cy.wait(300);
+}
+
 
   cy.document().then((doc) => {
     const infoDiv = doc.createElement('div');
@@ -70,6 +91,8 @@ Cypress.Commands.add('screenshotTimestamped', (n) => {
     infoDiv.style.borderRadius = '4px';
     infoDiv.style.textAlign = 'left';
     doc.body.appendChild(infoDiv);
+
+
   });
 
   cy.wait(500);

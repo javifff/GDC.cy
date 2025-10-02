@@ -3,37 +3,20 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false;
 });
 
-import GestionFM_FE from '../../support/page_objects/GestionFM/FE'
-import MenuPrincipal from '../../support/page_objects/MenuPrincipal'
-import Login from '../../support/page_objects/Login'
+import GestionFMGestion from '../../../support/page_objects/GestionFM/Gestion'
+import MenuPrincipal from '../../../support/page_objects/MenuPrincipal'
 
 
 
 
-describe('Módulo GestionFM', () => {
+
+describe('Módulo GestionFM - VER SI ES CONVENIENTE HACER PRUEBAS DESACOPLADAS FE Y BE', () => {
 
 
     beforeEach(() => {
         cy.loginAPI();
     });
 
-    it('IJCESGDSAR-5557 - FM. Volver al menu.', () => {
-
-        // Paso 1
-        cy.screenshotTimestamped(1)
-        MenuPrincipal.navegarAGestionFM()
-
-        // Paso 2
-        cy.screenshotTimestamped(2)
-        GestionFM_FE.pulsarBotonMenu()
-
-
-        // Paso 3
-        Login.verificarMenuPrincipal()
-        cy.screenshotTimestamped(3)
-
-
-    })
 
     xit('IJCESGDSAR-5511 - Visualzación OK en grilla resultados', () => {
 
@@ -42,7 +25,7 @@ describe('Módulo GestionFM', () => {
         MenuPrincipal.navegarAGestionFM()
 
         //Intercepta los datos del filtro y el count de registros
-        GestionFM_FE.respuestaMockeada(numReg)
+        GestionFMGestion.respuestaMockeada(numReg)
 
         // Comprueba si algunos campos del id 260917 se presentan bien en la grilla
         cy.get('#260917').should('exist')
@@ -69,8 +52,8 @@ describe('Módulo GestionFM', () => {
         }
 
         MenuPrincipal.navegaraAGestionFM()
-        GestionFM_FE.mostrarFiltros()
-        GestionFM_FE.rellenaCamposFiltros(params)
+        GestionFMGestion.mostrarFiltros()
+        GestionFMGestion.rellenaCamposFiltros(params)
 
         // Intercepta los requests y comprueba que los query params son los esperados 
         cy.intercept('GET', '/findFMByFilter2?all=false&size=15&page=*', (req) => {
@@ -101,7 +84,7 @@ describe('Módulo GestionFM', () => {
             })
         }).as('getFMCount')
 
-        GestionFM_FE.pulsaBuscar()
+        GestionFMGestion.pulsaBuscar()
 
         cy.wait(['@getFMData', '@getFMCount'])
 

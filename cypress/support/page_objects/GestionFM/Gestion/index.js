@@ -1,6 +1,6 @@
 const el = require('./elements').ELEMENTS
 
-class GestionFM_FE {
+class GestionFM_Gestion {
 
     respuestaMockeada(numReg) {
         //Intercepta los datos del filtro y el count de registros
@@ -57,6 +57,24 @@ class GestionFM_FE {
         cy.get(el.limpiarButton).click()
     }
 
+    verificarCamposVacios() {
+         cy.get(el.interruptionIdInput).should('have.value','')
+        //GestionFM_FE.seleccionarFechaHoraEnCalendario('2023-01-01', '00:00')
+        //cy.get(el.dateFromInput).should('have.value', '01/01/2023 00:00')
+        //GestionFM_FE.seleccionarFechaHoraEnCalendario('2023-01-31', '23:59')
+        //cy.get(el.dateToInput).should('have.value', '31/01/2023 23:59')
+       
+        // cy.get(el.dateFromInput).clear().type(params.dateFrom)
+        // cy.get(el.dateToInput).clear().type(params.dateTo)
+        // cy.get(el.projectCodeInput).clear({ force: true }).type(params.projectCode,{ force: true })
+        // cy.get(el.selectedCausalInput).click()
+        // cy.get(el.listaCausalInput).find('li').eq(params.selectedCausal).click()
+        // cy.get(el.buildingCodeInput).clear().type(params.buildingCode)
+        // cy.get(el.documentNumberInput).clear({ force: true }).type(params.documentNumber,{ force: true })
+
+
+    }
+
 
     seleccionarFechaHoraEnCalendario(fecha, hora) {
 
@@ -69,4 +87,4 @@ class GestionFM_FE {
 
 }
 
-export default new GestionFM_FE();
+export default new GestionFM_Gestion();
