@@ -1,15 +1,18 @@
-import InterrupcionesGI from "../../../support/page_objects/InterrupcionesGI";
-import Login from "../../../support/page_objects/Login";
-import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
-
 Cypress.on('uncaught:exception', (err, runnable) => {
     // Ignora todos los errores uncaught de la app
     return false;
 });
 
-describe('Módulo Interrupciones - GI', () => {
 
-    it('CERTASEARG-5425 - GI. Login', () => {
+import InterrupcionesGILogin from "../../../support/page_objects/InterrupcionesGI/Login";
+import Login from "../../../support/page_objects/Login";
+import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
+
+
+describe('Módulo Interrupciones - Login', () => {
+
+
+    it('CERTASEARG-5425 - Interrupciones - Login', () => {
 
         const usuario = Cypress.env('test').username
         const password = Cypress.env('test').password
@@ -48,7 +51,7 @@ describe('Módulo Interrupciones - GI', () => {
 
     })
 
-     it('CERTASEARG-5426 - GI. Login. Inicio de Sesion Simultáneo. Mismo Usuario.', () => {
+     it('CERTASEARG-5426 - Login. Inicio de Sesion Simultáneo. Mismo Usuario', () => {
 
         const usuario = Cypress.env('test').username
         const password = Cypress.env('test').password
@@ -88,7 +91,7 @@ describe('Módulo Interrupciones - GI', () => {
     })
 
 
-    it('CERTASEARG-5469 - GI. Volver al menú', () => {
+    it('CERTASEARG-5469 - Volver al menú', () => {
 
         // Paso 1
         cy.loginAPI();
@@ -97,14 +100,14 @@ describe('Módulo Interrupciones - GI', () => {
 
         // Paso 2
         cy.screenshotTimestamped(2.1)
-        InterrupcionesGI.pulsarBotonLogout();
+        InterrupcionesGILogin.pulsarBotonLogout();
         cy.screenshotTimestamped(2.2)
-        InterrupcionesGI.pulsarBotonVolverMenu();
+        InterrupcionesGILogin.pulsarBotonVolverMenu();
         cy.screenshotTimestamped(2.3) 
 
      })
 
-     it('CERTASEARG-5470 - GI. Cerrar sesión', () => {
+     it('CERTASEARG-5470 - Cerrar sesión', () => {
 
         // Paso 1
         cy.loginAPI();
@@ -114,20 +117,20 @@ describe('Módulo Interrupciones - GI', () => {
 
         // Paso 2
         cy.screenshotTimestamped(2.1)
-        InterrupcionesGI.pulsarBotonLogout();
+        InterrupcionesGILogin.pulsarBotonLogout();
         cy.screenshotTimestamped(2.2)
 
         // Paso 3
-        InterrupcionesGI.pulsarBotonCerrarSesion();
+        InterrupcionesGILogin.pulsarBotonCerrarSesion();
         cy.screenshotTimestamped(3.1)  
-        InterrupcionesGI.cancelarCerrarSesion();     
+        InterrupcionesGILogin.cancelarCerrarSesion();     
         cy.screenshotTimestamped(3.2)   
 
         // Paso 4
-        InterrupcionesGI.pulsarBotonLogout();
-        InterrupcionesGI.pulsarBotonCerrarSesion();
+        InterrupcionesGILogin.pulsarBotonLogout();
+        InterrupcionesGILogin.pulsarBotonCerrarSesion();
         cy.screenshotTimestamped(4.1)
-        InterrupcionesGI.aceptarCerrarSesion();
+        InterrupcionesGILogin.aceptarCerrarSesion();
         cy.screenshotTimestamped(4.2)
 
      })

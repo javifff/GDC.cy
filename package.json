@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.41.2",
     "allure-commandline": "^2.34.1",
     "cypress": "^14.5.3",
     "mocha-allure-reporter": "^1.4.0"
@@ -179,6 +180,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:run": "npx cypress run --browser chrome --headed --spec cypress/e2e/**/*.cy.js",
     "cy:run_headless": "npx cypress run --browser chrome  --spec cypress/e2e/**/*.cy.js",
+    "cy:run_headless_reporter": "npx cypress run --browser chrome  --spec cypress/e2e/**/*.cy.js --env allure=true",
+    "cy:run_borrar": "npx cypress run --browser chrome  --spec cypress/e2e/InterrupcionesGI/Login/*.cy.js --env allure=true",
     "cy:run:GI": "npx cypress run --browser chrome --headed --spec cypress/e2e/InterrupcionesGI/**/*.cy.js",
     "cy:run:GI_headless": "npx cypress run --browser chrome  --spec cypress/e2e/InterrupcionesGI/**/*.cy.js",
     "cy:run:FM": "npx cypress run --browser chrome --headed --spec cypress/e2e/GestionFM/**/*.cy.js",
@@ -189,7 +192,6 @@
     "cy:run:SIM_headless": "npx cypress run --browser chrome  --spec cypress/e2e/Simulacion/**/*.cy.js",
     "cy:run:BON": "npx cypress run --browser chrome --headed --spec cypress/e2e/Bonificacion/**/*.cy.js",
     "cy:run:BON_headless": "npx cypress run --browser chrome  --spec cypress/e2e/Bonificacion/**/*.cy.js",
-
     "report:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report"
   },
   "repository": {

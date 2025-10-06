@@ -1,14 +1,14 @@
-import InterrupcionesGI from "../../../support/page_objects/InterrupcionesGI";
-import Login from "../../../support/page_objects/Login";
-import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
-
 Cypress.on('uncaught:exception', (err, runnable) => {
     // Ignora todos los errores uncaught de la app
     return false;
 });
 
+import InterrupcionesGIFiltros from "../../../support/page_objects/InterrupcionesGI/Filtros";
+import Login from "../../../support/page_objects/Login";
+import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
 
-describe('Módulo Interrupciones - GI - Filtros', () => {
+
+describe('Módulo Interrupciones - Filtros', () => {
 
 
     beforeEach(() => {
@@ -26,8 +26,8 @@ describe('Módulo Interrupciones - GI - Filtros', () => {
         cy.screenshotTimestamped(1.2)
 
         // Paso 2
-        InterrupcionesGI.mostrarFiltros()
-        InterrupcionesGI.rellenarTodosLosFiltros()
+        InterrupcionesGIFiltros.mostrarFiltros()
+        InterrupcionesGIFiltros.rellenarTodosLosFiltros()
         cy.screenshotTimestamped(2)
 
     })

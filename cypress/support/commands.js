@@ -47,24 +47,24 @@ Cypress.Commands.add('screenshotTimestamped', (n, scrollToTop = false) => {
   const fileName = `${testName}_${n}_${localTimestamp}`;
 
 
-if (scrollToTop) {
-  cy.window().then((win) => {
-    // Scroll de la ventana principal
-    win.scrollTo(0, 0);
+  if (scrollToTop) {
+    cy.window().then((win) => {
+      // Scroll de la ventana principal
+      win.scrollTo(0, 0);
 
-    // También todos los elementos con scroll interno
-    const allElements = win.document.querySelectorAll('*');
-    allElements.forEach((el) => {
-      if (el.scrollTop > 0) {
-        el.scrollTop = 0;
-      }
-      if (el.scrollLeft > 0) {
-        el.scrollLeft = 0;
-      }
+      // También todos los elementos con scroll interno
+      const allElements = win.document.querySelectorAll('*');
+      allElements.forEach((el) => {
+        if (el.scrollTop > 0) {
+          el.scrollTop = 0;
+        }
+        if (el.scrollLeft > 0) {
+          el.scrollLeft = 0;
+        }
+      });
     });
-  });
-  cy.wait(300);
-}
+    cy.wait(300);
+  }
 
 
   cy.document().then((doc) => {
@@ -95,8 +95,10 @@ if (scrollToTop) {
 
   });
 
-  cy.wait(500);
+  //cy.wait(500);
   cy.screenshot(fileName);
+
+
 });
 
 

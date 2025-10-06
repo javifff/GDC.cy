@@ -12,7 +12,7 @@ describe('Módulo Simulacion - Listar', () => {
         cy.loginAPI();
     });
 
-    it('CERTASEARG-5705 - Buscar', () => {
+    it('CERTASEARG-5705 - Buscar Simulacion', () => {
 
         // Paso 1
         cy.loginAPI();
