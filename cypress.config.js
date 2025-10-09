@@ -17,11 +17,11 @@ module.exports = defineConfig({
       // 🔹 Asegura que Chrome (headed o headless) use 1920x1080 reales
       on("before:browser:launch", (browser = {}, launchOptions) => {
         if (browser.name === "chrome") {
-          launchOptions.args.push("--window-size=1600,900");
+          launchOptions.args.push("--window-size=1700,1060");
           launchOptions.args.push("--force-device-scale-factor=1");
           launchOptions.args.push("--hide-scrollbars");
           // Opcional: mejora compatibilidad CI / Windows
-          launchOptions.args.push("--no-sandbox");
+          //launchOptions.args.push("--no-sandbox");
         }
         return launchOptions;
       });
