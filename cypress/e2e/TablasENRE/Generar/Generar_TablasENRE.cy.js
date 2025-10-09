@@ -11,9 +11,6 @@ import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
 describe('Módulo Tablas ENRE - Generar', () => {
 
 
-    beforeEach(() => {
-        cy.loginAPI();
-    });
 
     it('CERTASEARG-5604 - Buscar y refrescar cada tabla', () => {
 

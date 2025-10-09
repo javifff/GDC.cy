@@ -32,7 +32,7 @@ class TablasENRE_Generar {
 
     }
 
-    seleccionaPeriodoPorNombre(periodo) {
+    seleccionaPeriodoPorNombre(nombre) {
         // cy.get(el.seleccionPeriodo).should('be.visible').click()
         // cy.get(el.listaPeriodos).should('be.visible').eq(periodo).click()
 

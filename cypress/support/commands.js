@@ -95,7 +95,7 @@ Cypress.Commands.add('screenshotTimestamped', (n, scrollToTop = false) => {
 
   });
 
-  //cy.wait(500);
+  // cy.wait(300);
   cy.screenshot(fileName);
 
 

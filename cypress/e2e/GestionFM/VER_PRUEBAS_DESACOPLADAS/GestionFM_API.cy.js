@@ -8,7 +8,7 @@ import GestionFM_BE from '../../../support/page_objects/GestionFM/PARA_PRUEBAS_D
 
 
 
-describe('Módulo GestionFM API', () => {
+describe('Módulo GestionFM API - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
 
 
     beforeEach(() => {

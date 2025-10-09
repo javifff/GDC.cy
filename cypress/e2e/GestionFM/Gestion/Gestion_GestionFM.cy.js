@@ -54,7 +54,7 @@ describe('Módulo GestionFM - Gestion', () => {
     })
 
 
-    it.skip('CERTASEARG-5557 - FM. Volver al menu', () => {
+    it('CERTASEARG-5557 - FM. Volver al menu', () => {
 
         // Paso 1
         cy.screenshotTimestamped(1)

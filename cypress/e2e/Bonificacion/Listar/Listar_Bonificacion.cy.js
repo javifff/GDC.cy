@@ -12,7 +12,7 @@ describe('Módulo Bonificacion - Listar', () => {
         cy.loginAPI();
     });
 
-    it('CERTASEARG-5761 - Buscar', () => {
+    it('CERTASEARG-5761 - Buscar Bonificacion', () => {
 
         // Paso 1
         cy.loginAPI();

@@ -10,7 +10,7 @@ import MenuPrincipal from '../../../support/page_objects/MenuPrincipal'
 
 
 
-describe('Módulo GestionFM - VER SI ES CONVENIENTE HACER PRUEBAS DESACOPLADAS FE Y BE', () => {
+describe('Módulo GestionFM - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
 
 
     beforeEach(() => {
