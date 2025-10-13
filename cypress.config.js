@@ -14,7 +14,8 @@ module.exports = defineConfig({
       // Mantiene tu integración actual con Allure
       allureWriter(on, config);
 
-      // 🔹 Asegura que Chrome (headed o headless) use 1920x1080 reales
+      // Ajuste deliberado: Chrome headless recorta unos ~100 px en altura y 100 px en ancho,
+      // por eso usamos --window-size=1700,1060 para obtener capturas exactas de 1600x900.
       on("before:browser:launch", (browser = {}, launchOptions) => {
         if (browser.name === "chrome") {
           launchOptions.args.push("--window-size=1700,1060");

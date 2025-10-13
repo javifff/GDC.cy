@@ -1,9 +1,7 @@
 export const ELEMENTS = {
 
-    pestañaNueva: '#mdl-navbar-tabs > a[href="/newBonification"]',
-
-
-
-   
+    tablaBonificaciones: 'table#tbProcesses',
+    filaTablaBonificaciones: 'table#tbProcesses > tbody > tr'
+       
 }
 

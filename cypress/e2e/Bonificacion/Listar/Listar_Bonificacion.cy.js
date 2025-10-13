@@ -4,6 +4,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
+import ListarBonificacion from "../../../support/page_objects/Bonificacion/Listar";
 
 describe('Módulo Bonificacion - Listar', () => {
 
@@ -18,10 +19,12 @@ describe('Módulo Bonificacion - Listar', () => {
         cy.loginAPI();
         cy.screenshotTimestamped(1.1)
         MenuPrincipal.navegarABonificacion()
-        cy.screenshotTimestamped(1.2)
+
 
         // Paso 2
         // Verificar que se listan las bonificaciones
+        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(1.2)
     })
 
 

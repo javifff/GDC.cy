@@ -181,7 +181,6 @@
     "cy:run": "npx cypress run --browser chrome --headed --spec cypress/e2e/**/*.cy.js",
     "cy:run_headless": "npx cypress run --browser chrome  --spec cypress/e2e/**/*.cy.js",
     "cy:run_headless_reporter": "npx cypress run --browser chrome  --spec cypress/e2e/**/*.cy.js --env allure=true",
-    "cy:run_borrar": "npx cypress run --browser chrome  --spec cypress/e2e/InterrupcionesGI/Login/*.cy.js --env allure=true",
     "cy:run:GI": "npx cypress run --browser chrome --headed --spec cypress/e2e/InterrupcionesGI/**/*.cy.js",
     "cy:run:GI_headless": "npx cypress run --browser chrome  --spec cypress/e2e/InterrupcionesGI/**/*.cy.js",
     "cy:run:FM": "npx cypress run --browser chrome --headed --spec cypress/e2e/GestionFM/**/*.cy.js",

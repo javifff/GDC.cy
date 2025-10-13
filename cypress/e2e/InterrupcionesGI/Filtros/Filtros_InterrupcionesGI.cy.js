@@ -15,7 +15,7 @@ describe('Módulo Interrupciones - Filtros', () => {
         cy.loginAPI();
     });
 
-    it('CERTASEARG-5451 - Seleccionar Filtro. Ingresar valores - Borrar Filtros', () => {
+    it('CERTASEARG-5451 - NO COMPLETO - Seleccionar Filtro. Ingresar valores - Borrar Filtros', () => {
 
         // Muchisimo trabajo para identificar todos los elementos de los filtros
 

@@ -4,6 +4,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
+import ListarSimulacion from "../../../support/page_objects/Simulacion/Listar";
 
 describe('Módulo Simulacion - Listar', () => {
 
@@ -22,6 +23,8 @@ describe('Módulo Simulacion - Listar', () => {
 
         // Paso 2
         // Verificar que se listan las simlaciones
+        ListarSimulacion.verificarTablaSimulacionesNoVacia()
+        cy.screenshotTimestamped(1.2)
     })
 
 
