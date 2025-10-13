@@ -27,6 +27,31 @@ describe('Módulo Simulacion - Listar', () => {
         cy.screenshotTimestamped(1.2)
     })
 
+    
+    it('CERTASEARG-5708 - Listar Simulaciones Resultados', () => {
+    
+            // Paso 1
+            cy.loginAPI();
+            cy.screenshotTimestamped(1.1)
+            MenuPrincipal.navegarASimulacion()
+            ListarSimulacion.verificarTablaSimulacionesNoVacia()
+            cy.screenshotTimestamped(1.2)
+    
+    
+            // Paso 2
+            ListarSimulacion.clickarResultados()
+            ListarSimulacion.verificarResultados()
+            cy.screenshotTimestamped(2)
+    
+            // Paso 3
+            ListarSimulacion.clickarBotonVolver()
+            ListarSimulacion.verificarTablaSimulacionesNoVacia()
+            cy.screenshotTimestamped(3)
+    
+    
+    
+        })
+
 
 });
 
