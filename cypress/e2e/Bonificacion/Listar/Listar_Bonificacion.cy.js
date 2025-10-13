@@ -9,10 +9,6 @@ import ListarBonificacion from "../../../support/page_objects/Bonificacion/Lista
 describe('Módulo Bonificacion - Listar', () => {
 
 
-    beforeEach(() => {
-        cy.loginAPI();
-    });
-
     it('CERTASEARG-5761 - Buscar Bonificacion', () => {
 
         // Paso 1
@@ -27,6 +23,30 @@ describe('Módulo Bonificacion - Listar', () => {
         cy.screenshotTimestamped(1.2)
     })
 
+
+       it('CERTASEARG-5764 - Listar Bonificaciones Resultados', () => {
+
+        // Paso 1
+        cy.loginAPI();
+        cy.screenshotTimestamped(1.1)
+        MenuPrincipal.navegarABonificacion()
+        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(1.2)
+
+
+        // Paso 2
+        ListarBonificacion.clickarResultados()
+        ListarBonificacion.verificarResultados()
+        cy.screenshotTimestamped(2)
+
+        // Paso 3
+        ListarBonificacion.clickarBotonVolver()
+        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(3)
+
+
+
+    })
 
 });
 
