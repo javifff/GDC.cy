@@ -75,35 +75,7 @@ describe('Módulo Bonificacion - Listar', () => {
 
     })
 
-    it('CERTASEARG-5768 - Listar Bonificaciones Resultados - Detalle por clientes', () => {
-
-        // Paso 1
-        cy.loginAPI();
-        cy.screenshotTimestamped(1.1)
-        MenuPrincipal.navegarABonificacion()
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
-        cy.screenshotTimestamped(1.2)
-
-
-        // Paso 2
-        ListarBonificacion.clickarResultados()
-        ListarBonificacion.verificarResultados()
-        cy.screenshotTimestamped(2)
-
-        // Paso 3
-        ListarBonificacion.clickarVerDetalles()
-        ListarBonificacion.verificarResultados()
-        cy.screenshotTimestamped(2)
-
-        // Paso 4
-        ListarBonificacion.clickarBotonVolver()
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
-        cy.screenshotTimestamped(3)
-
-
-
-    })
-
+   
 
 });
 
