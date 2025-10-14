@@ -106,3 +106,13 @@ Cypress.Commands.add('logWithContext', (functionName, data) => {
   const timestamp = new Date().toISOString();
   console.log(`${timestamp} [${functionName}] -`, data);
 });
+
+
+Cypress.Commands.add('eliminaArchivo', (nombreArchivo) => {
+  const downloadsFolder = Cypress.config('downloadsFolder');
+  const rutaCompleta = `${downloadsFolder}/${nombreArchivo}`;
+
+  cy.task('deleteFile', rutaCompleta).then((resultado) => {
+    cy.log(`Archivo: ${resultado.file} - Estado: ${resultado.status}`);
+  });
+});

@@ -42,6 +42,46 @@ class Simulacion_Listar {
         cy.get(el.botonVolver).should('be.visible').click({ force: true })
     }
 
+    clickarDescargarCSV() {
+        cy.get(el.botonDescargarCSV).should('be.visible').click()
+    }
+
+    compruebaDescarga(nombreArchivo) {
+        const downloadsFolder = Cypress.config('downloadsFolder')
+        //     cy.readFile(`${downloadsFolder}/${nombreArchivo}`, { timeout: 15000 }).should('exist') 
+        cy.readFile(`${downloadsFolder}/${nombreArchivo}`, { timeout: 15000 }).then((contenido) => {
+            // Dividir el contenido en líneas y tomar solo las primeras 20
+            const primerasLineas = contenido.split('\n').slice(0, 20).join('\n');
+
+            // Inyectar las líneas en el DOM para visualizarlas
+            cy.document().then((doc) => {
+
+
+                // Guardar el contenido original del body
+                const originalContent = doc.body.innerHTML;
+
+                const pre = doc.createElement('pre');
+                pre.textContent = primerasLineas;
+                pre.style.whiteSpace = 'pre-wrap';
+                pre.style.fontFamily = 'monospace';
+                pre.style.fontSize = '14px';
+                pre.style.maxHeight = '500px';
+                pre.style.overflow = 'auto';
+                doc.body.innerHTML = ''; // Limpiar el body si es necesario
+                doc.body.appendChild(pre);
+
+                cy.screenshotTimestamped(nombreArchivo);
+
+
+                cy.then(() => {
+                    doc.body.innerHTML = originalContent;
+                });
+
+            })
+
+
+        })
+    }
 
 }
 

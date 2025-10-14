@@ -24,7 +24,7 @@ describe('Módulo Bonificacion - Listar', () => {
     })
 
 
-       it('CERTASEARG-5764 - Listar Bonificaciones Resultados', () => {
+    it('CERTASEARG-5764 - Listar Bonificaciones Resultados', () => {
 
         // Paso 1
         cy.loginAPI();
@@ -44,9 +44,37 @@ describe('Módulo Bonificacion - Listar', () => {
         ListarBonificacion.verificarTablaBonificacionesNoVacia()
         cy.screenshotTimestamped(3)
 
+    })
 
+    it('CERTASEARG-5766 - Listar Bonificaciones Resultados - Descargar CSV', () => {
+
+        // Paso 1
+        cy.loginAPI();
+        cy.screenshotTimestamped(1.1)
+        MenuPrincipal.navegarABonificacion()
+        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(1.2)
+
+
+        // Paso 2
+        ListarBonificacion.clickarResultados()
+        ListarBonificacion.verificarResultados()
+        cy.screenshotTimestamped(2)
+
+        // Paso 3
+        cy.eliminaArchivo('Resultado cálculo de creditos.csv')
+        ListarBonificacion.clickarDescargarCSV()
+        ListarBonificacion.compruebaDescarga('Resultado cálculo de creditos.csv')
+
+
+
+        // Paso 4
+        ListarBonificacion.clickarBotonVolver()
+        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(3)
 
     })
+
 
 });
 
