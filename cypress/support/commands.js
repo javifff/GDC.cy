@@ -95,7 +95,7 @@ Cypress.Commands.add('screenshotTimestamped', (n, scrollToTop = false) => {
 
   });
 
-  // cy.wait(300);
+  cy.wait(500);
   cy.screenshot(fileName);
 
 
@@ -114,5 +114,12 @@ Cypress.Commands.add('eliminaArchivo', (nombreArchivo) => {
 
   cy.task('deleteFile', rutaCompleta).then((resultado) => {
     cy.log(`Archivo: ${resultado.file} - Estado: ${resultado.status}`);
+  });
+});
+
+Cypress.Commands.add('shouldContainIgnoreCase', (selector, expected) => {
+  cy.get(selector).should('be.visible').then(($el) => {
+    const actual = $el.text().trim().toLowerCase();
+    expect(actual).to.contain(expected.trim().toLowerCase());
   });
 });

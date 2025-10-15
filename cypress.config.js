@@ -7,6 +7,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 20000,
   downloadsFolder: 'cypress/downloads',
   e2e: {
+    screenshotOnRunFailure: true,
     viewportHeight: 900,
     viewportWidth: 1600,
     baseUrl: "http://claaaicr3a03:8448/",

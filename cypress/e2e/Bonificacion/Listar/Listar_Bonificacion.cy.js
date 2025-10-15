@@ -4,7 +4,10 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
-import ListarBonificacion from "../../../support/page_objects/Bonificacion/Listar";
+import BonificacionListarBonificaciones from "../../../support/page_objects/Bonificacion/Listar/Bonificaciones";
+import BonificacionListarResultados from "../../../support/page_objects/Bonificacion/Listar/Resultados";
+import BonificacionListarDetallesClientes from "../../../support/page_objects/Bonificacion/Listar/DetallesClientes";
+
 
 describe('Módulo Bonificacion - Listar', () => {
 
@@ -19,7 +22,7 @@ describe('Módulo Bonificacion - Listar', () => {
 
         // Paso 2
         // Verificar que se listan las bonificaciones
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
         cy.screenshotTimestamped(1.2)
     })
 
@@ -30,18 +33,18 @@ describe('Módulo Bonificacion - Listar', () => {
         cy.loginAPI();
         cy.screenshotTimestamped(1.1)
         MenuPrincipal.navegarABonificacion()
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
         cy.screenshotTimestamped(1.2)
 
 
         // Paso 2
-        ListarBonificacion.clickarResultados()
-        ListarBonificacion.verificarResultados()
+        BonificacionListarBonificaciones.clickarResultadosBonificaciones()
+        BonificacionListarResultados.verificarResultadosBonificaciones()
         cy.screenshotTimestamped(2)
 
         // Paso 3
-        ListarBonificacion.clickarBotonVolver()
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        BonificacionListarResultados.clickarBotonVolver()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
         cy.screenshotTimestamped(3)
 
     })
@@ -52,29 +55,58 @@ describe('Módulo Bonificacion - Listar', () => {
         cy.loginAPI();
         cy.screenshotTimestamped(1.1)
         MenuPrincipal.navegarABonificacion()
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
         cy.screenshotTimestamped(1.2)
 
 
         // Paso 2
-        ListarBonificacion.clickarResultados()
-        ListarBonificacion.verificarResultados()
+        BonificacionListarBonificaciones.clickarResultadosBonificaciones()
+        BonificacionListarResultados.verificarResultadosBonificaciones()
         cy.screenshotTimestamped(2)
 
         // Paso 3
         cy.eliminaArchivo('Resultado cálculo de creditos.csv')
-        ListarBonificacion.clickarDescargarCSV()
-        ListarBonificacion.compruebaDescarga('Resultado cálculo de creditos.csv')
+        BonificacionListarResultados.clickarDescargarCSV()
+        BonificacionListarResultados.compruebaDescarga('Resultado cálculo de creditos.csv')
 
 
 
         // Paso 4
-        ListarBonificacion.clickarBotonVolver()
-        ListarBonificacion.verificarTablaBonificacionesNoVacia()
+        BonificacionListarResultados.clickarBotonVolver()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
         cy.screenshotTimestamped(3)
 
     })
 
+  it('CERTASEARG-5768 - Listar Bonificaciones Resultados - Detalles por clientes', () => {
+
+        // Paso 1
+        cy.loginAPI();
+        cy.screenshotTimestamped(1.1)
+        MenuPrincipal.navegarABonificacion()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(1.2)
+
+
+        // Paso 2
+        BonificacionListarBonificaciones.clickarResultadosBonificaciones()
+        BonificacionListarResultados.verificarResultadosBonificaciones()
+        cy.screenshotTimestamped(2)
+
+        // Paso 3
+        BonificacionListarResultados.clickarResultadosVerDetallesClientes();
+        BonificacionListarDetallesClientes.verificarResultadosVerDetallesClientes();
+        cy.screenshotTimestamped(3)
+
+        // Paso 4
+        BonificacionListarDetallesClientes.clickarBotonVolver()
+        BonificacionListarResultados.verificarResultadosBonificaciones();
+        cy.screenshotTimestamped(4.1)
+        BonificacionListarResultados.clickarBotonVolver()
+        BonificacionListarBonificaciones.verificarTablaBonificacionesNoVacia()
+        cy.screenshotTimestamped(4.2)
+
+    })
    
 
 });
