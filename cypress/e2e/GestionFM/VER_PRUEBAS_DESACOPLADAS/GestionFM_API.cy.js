@@ -17,7 +17,7 @@ describe('Módulo GestionFM API - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
 
    
 
-    xit('IJCESGDSAR-5511 - Filtro con Fecha Inicio', () => {
+    xit('Filtro con Fecha Inicio', () => {
 
         const params = {
             interruptionId: '',
@@ -35,7 +35,7 @@ describe('Módulo GestionFM API - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
 
     });
 
-    xit('IJCESGDSAR-5511 - Seleccionado check "Sin operación"', () => {
+    xit('Seleccionado check "Sin operación"', () => {
 
         const params = {
             interruptionId: '',

@@ -51,7 +51,7 @@ describe('Módulo Interrupciones - Login', () => {
 
     })
 
-     it('CERTASEARG-5426 - Login. Inicio de Sesion Simultáneo. Mismo Usuario', () => {
+     it('CERTASEARG-5426 - Interrupciones - Login. Inicio de Sesion Simultáneo. Mismo Usuario', () => {
 
         const usuario = Cypress.env('test').username
         const password = Cypress.env('test').password
@@ -91,7 +91,7 @@ describe('Módulo Interrupciones - Login', () => {
     })
 
 
-    it('CERTASEARG-5469 - Volver al menú', () => {
+    it('CERTASEARG-5469 - Interrupciones - Volver al menú', () => {
 
         // Paso 1
         cy.loginAPI();
@@ -107,7 +107,7 @@ describe('Módulo Interrupciones - Login', () => {
 
      })
 
-     it('CERTASEARG-5470 - Cerrar sesión', () => {
+     it('CERTASEARG-5470 - Interrupciones - Cerrar sesión', () => {
 
         // Paso 1
         cy.loginAPI();

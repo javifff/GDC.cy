@@ -7,14 +7,10 @@ import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
 import SimulacionListarSimulaciones from "../../../support/page_objects/Simulacion/Listar/Simulaciones";
 import SimulacionListarResultados from "../../../support/page_objects/Simulacion/Listar/Resultados";
 import SimulacionListarDetallesClientes from "../../../support/page_objects/Simulacion/Listar/DetallesClientes";
+import SimulacionListarDetallesInterrupciones from "../../../support/page_objects/Simulacion/Listar/DetallesInterrupciones";
 
 
 describe('Módulo Simulacion - Listar', () => {
-
-
-    beforeEach(() => {
-        cy.loginAPI();
-    });
 
     it('CERTASEARG-5705 - Buscar Simulacion', () => {
 
@@ -111,6 +107,45 @@ describe('Módulo Simulacion - Listar', () => {
         SimulacionListarResultados.clickarBotonVolver()
         SimulacionListarSimulaciones.verificarTablaSimulacionesNoVacia()
         cy.screenshotTimestamped(4.2)
+
+    })
+   
+
+     it('CERTASEARG-5714 - Listar Simulaciones Resultados - Detalles por interrupciones', () => {
+
+        // Paso 1
+        cy.loginAPI();
+        cy.screenshotTimestamped(1.1)
+        MenuPrincipal.navegarASimulacion()
+        SimulacionListarSimulaciones.verificarTablaSimulacionesNoVacia()
+        cy.screenshotTimestamped(1.2)
+
+
+        // Paso 2
+        SimulacionListarSimulaciones.clickarResultadosSimulaciones()
+        SimulacionListarResultados.verificarResultadosSimulaciones()
+        cy.screenshotTimestamped(2)
+
+        // Paso 3
+        SimulacionListarResultados.clickarResultadosVerDetallesClientes();
+        SimulacionListarDetallesClientes.verificarResultadosVerDetallesClientes();
+        cy.screenshotTimestamped(3)
+
+        // Paso 4
+        SimulacionListarDetallesClientes.clickarResultadosVerDetallesInterrupciones();
+        SimulacionListarDetallesInterrupciones.verificarResultadosVerDetallesInterrupciones();
+        cy.screenshotTimestamped(4)
+
+        // Paso 5
+        SimulacionListarDetallesInterrupciones.clickarBotonVolver()
+        SimulacionListarDetallesClientes.verificarResultadosVerDetallesClientes();
+        cy.screenshotTimestamped(5.1)
+        SimulacionListarDetallesClientes.clickarBotonVolver()
+        SimulacionListarResultados.verificarResultadosSimulaciones();
+        cy.screenshotTimestamped(5.2)
+        SimulacionListarResultados.clickarBotonVolver()
+        SimulacionListarSimulaciones.verificarTablaSimulacionesNoVacia()
+        cy.screenshotTimestamped(5.3)
 
     })
    

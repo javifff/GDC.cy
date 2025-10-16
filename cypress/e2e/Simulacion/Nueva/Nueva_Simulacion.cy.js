@@ -9,11 +9,9 @@ import SimulacionComun from "../../../support/page_objects/Simulacion/Comun";
 
 describe('Módulo Simulacion - Nueva', () => {
 
-    beforeEach(() => {
-        cy.loginAPI();
-    });
 
-    it('CERTASEARG-5741 - Crear nueva Simulacion', () => {
+
+    it('CERTASEARG-5741 - No COMPLETA - Crear nueva Simulacion', () => {
 
         // Paso 1
         cy.loginAPI();

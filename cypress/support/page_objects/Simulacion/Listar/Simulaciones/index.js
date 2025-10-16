@@ -12,7 +12,7 @@ class SimulacionListarSimulaciones {
 
     clickarResultadosSimulaciones() {
         // Intercepta la request que indica carga completa de la siguiente página
-        cy.intercept('GET', '**/styles/icons/MaterialIcons-Regular.woff2**').as('ultimoRequest');
+        cy.intercept('GET', '**/credit/details/area/results?**').as('ultimoRequest');
 
         // Espera a que la tabla esté visible
         cy.get(el.tablaSimulaciones).should('be.visible');

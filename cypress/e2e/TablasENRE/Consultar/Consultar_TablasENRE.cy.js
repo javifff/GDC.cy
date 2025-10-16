@@ -13,7 +13,7 @@ import MenuPrincipal from "../../../support/page_objects/MenuPrincipal";
 describe('Módulo Tablas ENRE - Consultar', () => {
 
 
-     it('CERTASEARG-5682 - Consulta por Cliente inexistente', () => {
+     it('CERTASEARG-5682 - ENRE - Consulta por Cliente inexistente', () => {
     
             // Paso 1
             cy.loginAPI();
@@ -35,7 +35,7 @@ describe('Módulo Tablas ENRE - Consultar', () => {
             cy.screenshotTimestamped(3.2, true);
         })
 
-        it('CERTASEARG-5685 - Consulta por Documento inexistente', () => {
+        it('CERTASEARG-5685 - ENRE - Consulta por Documento inexistente', () => {
     
             // Paso 1
             cy.loginAPI();

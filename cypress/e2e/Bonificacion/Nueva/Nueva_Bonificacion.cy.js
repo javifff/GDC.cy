@@ -13,7 +13,7 @@ describe('Módulo Simulacion - Nueva', () => {
         cy.loginAPI();
     });
 
-    it('CERTASEARG-5761 - Crear nueva Bonificacion - Tipo Pre-calculo', () => {
+    it('CERTASEARG-5790 - NO COMPLETA - Crear nueva Bonificacion - Tipo Pre-calculo', () => {
 
         // Paso 1
         cy.loginAPI();

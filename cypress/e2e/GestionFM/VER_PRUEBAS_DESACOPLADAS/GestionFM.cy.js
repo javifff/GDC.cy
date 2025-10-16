@@ -18,7 +18,7 @@ describe('Módulo GestionFM - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
     });
 
 
-    xit('IJCESGDSAR-5511 - Visualzación OK en grilla resultados', () => {
+    xit('5511 - Visualzación OK en grilla resultados', () => {
 
         const numReg = 60
 
@@ -39,7 +39,7 @@ describe('Módulo GestionFM - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
 
     })
 
-    xit('IJCESGDSAR-5511 - Filtros seleccionados forman un API Request correcto', () => {
+    xit('5511 - Filtros seleccionados forman un API Request correcto', () => {
 
         const params = {
             interruptionId: '12345',
@@ -51,7 +51,7 @@ describe('Módulo GestionFM - VER PRUEBAS DESACOPLADAS FE Y BE', () => {
             documentNumber: 'D-001'
         }
 
-        MenuPrincipal.navegaraAGestionFM()
+        MenuPrincipal.navegarAGestionFM()
         GestionFMGestion.mostrarFiltros()
         GestionFMGestion.rellenaCamposFiltros(params)
 

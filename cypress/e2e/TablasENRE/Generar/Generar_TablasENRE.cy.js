@@ -12,7 +12,7 @@ describe('Módulo Tablas ENRE - Generar', () => {
 
 
 
-    it('CERTASEARG-5604 - Buscar y refrescar cada tabla', () => {
+    it('CERTASEARG-5604 - ENRE - Buscar y refrescar cada tabla', () => {
 
         // Paso 1
         cy.loginAPI();
